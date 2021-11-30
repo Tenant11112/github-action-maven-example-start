@@ -61,10 +61,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to EC2
-        uses: actions/checkout@v2
+        uses: appleboy/ssh-action@master
         with:
-          ssh-known-hosts: ${{ secrets.HOST }}
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
-          token: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           script: whoami
 
