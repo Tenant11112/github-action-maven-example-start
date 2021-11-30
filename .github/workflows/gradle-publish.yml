@@ -65,6 +65,6 @@ jobs:
         with:
           ssh-known-hosts: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
-          ssh-key: ${{ secrets.SSH_KEY }}
+          token: ${{ secrets.SSH_KEY }}
           script: whoami
 
