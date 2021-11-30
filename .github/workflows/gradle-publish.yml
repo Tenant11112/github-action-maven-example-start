@@ -57,6 +57,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_REPO }}
 
   deploy-docker-image-to-ec2:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Deploy to EC2
