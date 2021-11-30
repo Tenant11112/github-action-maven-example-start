@@ -67,3 +67,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           run: docker pull ${{ secrets.DOCKER_REPO }} & docker run -d --name kartike ${{ secrets.DOCKER_REPO }}
+          
