@@ -60,11 +60,11 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: appleboy/ssh-action@master
+      - uses: ./
       - name: Deploy to EC2
-        run: docker pull ${{ secrets.DOCKER_REPO }} & docker run -d --name kartike ${{ secrets.DOCKER_REPO }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+          script: whoami
 
