@@ -59,7 +59,7 @@ jobs:
   deploy-docker-image-to-ec2:
     steps:
       - name: Deploy to EC2
-        uses: actions/checkout@v2
+        if: always()
           with:
             command: |
               docker pull ${{ secrets.DOCKER_REPO }} & docker run -d --name kartike ${{ secrets.DOCKER_REPO }}
