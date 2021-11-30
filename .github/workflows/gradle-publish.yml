@@ -63,8 +63,8 @@ jobs:
       - name: Deploy to EC2
         uses: actions/checkout@v2
         with:
-          host: ${{ secrets.HOST }}
+          ssh-known-hosts: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          ssh-key: ${{ secrets.SSH_KEY }}
           script: whoami
 
