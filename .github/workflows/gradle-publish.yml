@@ -70,7 +70,8 @@ jobs:
           script: docker pull ${{ secrets.DOCKER_REPO }} & docker run -d --name kartike  ${{ secrets.DOCKER_REPO }}
 
 
-  name: Configure AWS credentials
+  push-docker-image-to-ecr:
+    name: pushtoecr
     uses: aws-actions/configure-aws-credentials@v1
     with:
       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
