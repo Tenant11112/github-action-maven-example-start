@@ -72,6 +72,7 @@ jobs:
 
   push-docker-image-to-ecr:
     name: pushtoecr
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy to EC2
         uses: aws-actions/configure-aws-credentials@v1
