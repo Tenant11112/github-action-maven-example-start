@@ -54,7 +54,7 @@ jobs:
       - name: Build Container image
         run:  docker build -t ${{ secrets.IMAGE_NAME }}:latest .
       - name: Test by printing
-        run: echo " Print ${{ secrets.IMAGE_HOST_NAME }}:${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest "
+        run: echo " Print ${{secrets.IMAGE_HOST_NAME}}:${{secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest"
       - name:  Apply tag command
         env:
             FULL_IMAGE_NAME : '${{ secrets.IMAGE_HOST_NAME }}:${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest'
