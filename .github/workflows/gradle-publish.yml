@@ -56,8 +56,7 @@ jobs:
       - name:  Apply tag command
         env:
             FULL_IMAGE_NAME : '${{ secrets.IMAGE_HOST_NAME }}:${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest'
-         run: echo " Print a single environment variable (the commit SHA ) - ${{ secrets.IMAGE_HOST_NAME }}:${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest "
-#        run:  docker push $FULL_IMAGE_NAME
+        run:  docker push $FULL_IMAGE_NAME
 
   deploy-docker-image-to-ec2:
     name: Deploy
