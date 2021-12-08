@@ -58,7 +58,7 @@ jobs:
       - name:  Apply tag command
         env:
             FULL_IMAGE_NAME : '${{ secrets.IMAGE_HOST_NAME }}:${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest'
-        run:  docker push $FULL_IMAGE_NAME
+        run:  docker push artifactory.beta.ibdp.calibo.com/newprojectteam/f/imagetemp:0.1
 
   deploy-docker-image-to-ec2:
     name: Deploy
