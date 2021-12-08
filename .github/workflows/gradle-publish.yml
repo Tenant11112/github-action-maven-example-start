@@ -52,11 +52,14 @@ jobs:
       - name: Login to jfrog artifact
         run:  docker login ${{ secrets.IMAGE_HOST_NAME }} -u ${{ secrets.IMAGE_USER_WRITER }} -p ${{ secrets.IMAGE_PASSWORD_WRITER }}
       - name: Build Container image
-        run:  docker build -t ${{ secrets.IMAGE_HOST_NAME }}${{ secrets.IMAGE_REPO_NAME }}${{ secrets.IMAGE_NAME }}:latest .
+        run:  docker build -t ${{ secrets.IMAGE_NAME }}:latest .
+      - name: Exporting
+        env:
+          FULL_IMAGE_NAME : '${{ secrets.IMAGE_HOST_NAME }}${{ secrets.IMAGE_REPO_NAME }}${{ secrets.IMAGE_NAME }}:latest'
       - name: Apply tag command
-        run:  docker tag ${{ secrets.IMAGE_NAME }}:latest ${{ secrets.IMAGE_HOST_NAME }}${{ secrets.IMAGE_REPO_NAME }}${{ secrets.IMAGE_NAME }}:latest
+        run:  docker tag ${{ secrets.IMAGE_NAME }}:latest $FULL_IMAGE_NAME
       - name: Publish Docker image
-        run:  docker push ${{ secrets.IMAGE_HOST_NAME }}${{ secrets.IMAGE_REPO_NAME }}${{ secrets.IMAGE_NAME }}:latest
+        run:  docker push $FULL_IMAGE_NAME
 
   deploy-docker-image-to-ec2:
     name: Deploy
