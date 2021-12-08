@@ -53,12 +53,16 @@ jobs:
         run:  docker login ${{ secrets.IMAGE_HOST_NAME }} -u ${{ secrets.IMAGE_USER_WRITER }} -p ${{ secrets.IMAGE_PASSWORD_WRITER }}
       - name: Build Container image
         run:  docker build -t artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest .
-      - name: Test by printing values
-        run: echo " Print ${{secrets.IMAGE_HOST_NAME}}:${{secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest"
-      - name:  Apply tag command
-       # run:  docker tag imagetemp:latest  artifactory.beta.ibdp.calibo.com/newprojectteam/f/imagetemp:0.1
-       # run:  docker push artifactory.beta.ibdp.calibo.com/newprojectteam/f/imagetemp:latest
+      - name: Apply push command
         run: docker push artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: docker pull artifactory.beta.ibdp.calibo.com/newprojectteam/f/ & docker run -d --name kartike  artifactory.beta.ibdp.calibo.com/newprojectteam/f/
+
 
   deploy-docker-image-to-ec2:
     name: Deploy
