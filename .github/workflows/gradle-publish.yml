@@ -60,7 +60,7 @@ jobs:
             FULL_IMAGE_NAME : '${{ secrets.IMAGE_HOST_NAME }}:${{ secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest'
        # run:  docker tag imagetemp:latest  artifactory.beta.ibdp.calibo.com/newprojectteam/f/imagetemp:0.1
        # run:  docker push artifactory.beta.ibdp.calibo.com/newprojectteam/f/imagetemp:latest
-        run:  docker push imagetemp:latest
+        run: docker login ${{ secrets.IMAGE_HOST_NAME }} -u ${{ secrets.IMAGE_USER_WRITER }} -p ${{ secrets.IMAGE_PASSWORD_WRITER }}; docker push imagetemp:latest
 
   deploy-docker-image-to-ec2:
     name: Deploy
