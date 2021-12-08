@@ -119,7 +119,7 @@ jobs:
       - name: Login to JFrog
         uses: docker/login-action@v1
         with:
-          registry: https://artifactory.beta.ibdp.calibo.com/newprojectteam
+          registry: https://artifactory.beta.ibdp.calibo.com/artifactory/newprojectteam/
           username: ${{ secrets.JFROG_USER_WRITER }}
           password: ${{ secrets.JFROG_PASSWORD_WRITER }}
       - name: Build and push
@@ -127,4 +127,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: artifactory.beta.ibdp.calibo.com/name:latest
+          tags: ${{ secrets.DOCKER_REPO }}:latest
