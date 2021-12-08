@@ -53,7 +53,7 @@ jobs:
         run:  docker login ${{ secrets.IMAGE_HOST_NAME }} -u ${{ secrets.IMAGE_USER_WRITER }} -p ${{ secrets.IMAGE_PASSWORD_WRITER }}
       - name: Build Container image
         run:  docker build -t ${{ secrets.IMAGE_NAME }}:latest .
-      - name: Test by printing
+      - name: Test by printing values
         run: echo " Print ${{secrets.IMAGE_HOST_NAME}}:${{secrets.IMAGE_REPO_NAME }}:${{ secrets.IMAGE_NAME }}:latest"
       - name:  Apply tag command
         env:
