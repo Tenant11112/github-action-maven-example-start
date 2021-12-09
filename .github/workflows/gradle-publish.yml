@@ -109,7 +109,6 @@ jobs:
           -Dsonar.host.url=${{ secrets.SONARQUBE_HOST }}
           -Dsonar.login=${{ secrets.SONARQUBE_TOKEN }}
           -Dsonar.projectKey=abc
-          -Dsonar.branch.name=master
           -Dsonar.scm.provider=git
           -Dsonar.java.binaries=/tmp
 
