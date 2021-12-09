@@ -90,7 +90,7 @@ jobs:
     needs: [build_and_test]
     steps:
       - name: Setup sonarqube
-        uses: warchant/setup-sonar-scanner@v1
+        uses: kitabisa/sonarqube-action@v1.1.0
 
       - name: 'Checkout repository on branch: master'
         uses: actions/checkout@v2
