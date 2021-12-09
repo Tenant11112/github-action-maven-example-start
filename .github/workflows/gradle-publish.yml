@@ -108,7 +108,7 @@ jobs:
         run: sonar-scanner
           -Dsonar.host.url=${{ secrets.SONARQUBE_HOST }}
           -Dsonar.login=${{ secrets.SONARQUBE_TOKEN }}
-          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+          -Dsonar.projectKey= abc   #${{ secrets.SONAR_PROJECT_KEY }}
           -Dsonar.branch.name=master
           -Dsonar.scm.provider=git
           -Dsonar.java.binaries=/tmp
