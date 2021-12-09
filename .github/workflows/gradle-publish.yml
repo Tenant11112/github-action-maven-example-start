@@ -137,8 +137,8 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: kartike
           IMAGE_TAG: latest
-        with:
-          args: set image deployment/kartike kartike=$ECR_REGISTRY/kartike:latest
+#        with:
+#          args: set image deployment/kartike kartike=$ECR_REGISTRY/kartike:latest
 
 
 
