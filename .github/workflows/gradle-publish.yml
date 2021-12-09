@@ -111,6 +111,7 @@ jobs:
           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
           -Dsonar.branch.name=master
           -Dsonar.scm.provider=git
+          -Dsonar.java.binaries=/tmp
 
 #  push-docker-image-to-ecr:
 #    name: pushtoecr
