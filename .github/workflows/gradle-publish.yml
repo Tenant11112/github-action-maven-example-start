@@ -138,7 +138,7 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.REPONAME }}
          # IMAGE_TAG: ${{ github.sha }}
         with:
-          args: set image deployment/$ECR_REPOSITORY $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          args: set image artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
 
       - name: verify deployment
         uses: kodermax/kubectl-aws-eks@master
