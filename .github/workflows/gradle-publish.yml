@@ -126,16 +126,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+#      - name: Login to Amazon ECR
+#        id: login-ecr
+#        uses: aws-actions/amazon-ecr-login@v1
 
       - name: deploy to cluster
         uses: kodermax/kubectl-aws-eks@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.REPONAME }}
+         # ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+         # ECR_REPOSITORY: ${{ secrets.REPONAME }}
          # IMAGE_TAG: ${{ github.sha }}
         with:
           args: set image artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
