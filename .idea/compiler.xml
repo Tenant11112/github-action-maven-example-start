@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="github-action-maven-tutorial" />
+        <module name="github-action-maven-example-start" />
       </profile>
     </annotationProcessing>
   </component>
