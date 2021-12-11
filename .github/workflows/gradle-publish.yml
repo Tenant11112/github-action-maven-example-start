@@ -138,8 +138,9 @@ jobs:
 #          ECR_REPOSITORY: kartike
           IMAGE_TAG: latest
         with:
-            script: docker pull artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest & docker run -d --name demo_tech_talk  artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
+            script: kubectl run test --image=artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
             #args: set image deployment/$ECR_REPOSITORY $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+           #kubectl run test --image=artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
 
 
 
