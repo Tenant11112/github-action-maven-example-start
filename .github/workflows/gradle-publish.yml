@@ -54,7 +54,7 @@ jobs:
       - name: Build Container image
         run:  docker build -t aartifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest .
       - name: Apply push command
-        run:  docker push aartifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
+        run:  docker push artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
         with:
