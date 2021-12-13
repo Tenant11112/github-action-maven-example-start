@@ -61,7 +61,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          script: docker pull aartifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest & docker run -d --name demo_tech_talk  artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
+          script:  docker run -d --name demo_tech_talk2  artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
