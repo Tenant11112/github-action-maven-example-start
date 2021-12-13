@@ -52,9 +52,9 @@ jobs:
       - name: Login to jfrog artifact
         run:  docker login ${{ secrets.IMAGE_HOST_NAME }} -u ${{ secrets.IMAGE_USER_WRITER }} -p ${{ secrets.IMAGE_PASSWORD_WRITER }}
       - name: Build Container image
-        run:  docker build -t artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest .
+        run:  docker build -t aartifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest .
       - name: Apply push command
-        run:  docker push artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
+        run:  docker push aartifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
         with:
@@ -126,21 +126,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-#      - name: Login to Amazon ECR
-#        id: login-ecr
-#        uses: aws-actions/amazon-ecr-login@v1
-
       - name: deploy to cluster
         uses: kodermax/kubectl-aws-eks@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-#          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-#          ECR_REPOSITORY: kartike
-        #  IMAGE_TAG: latest
         with:
          args: run test --image=artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
-            #args: set image deployment/$ECR_REPOSITORY $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-           #kubectl run test --image=artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp:latest
 
 
 
