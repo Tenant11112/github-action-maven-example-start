@@ -137,27 +137,27 @@ jobs:
     name: deploy to cluster using helm
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Prep helm chart
-        run: |
-          mv ./.helm/app/Chart.yaml ./.helm/app/Chart.old.yaml &&
-          cat ./.helm/app/Chart.old.yaml | grep -v appVersion > ./.helm/app/Chart.yaml &&
-          echo -e "\r\nappVersion: v${GITHUB_REF##*/}\r\n" >> ./.helm/app/Chart.yaml &&
-          cat ./.helm/app/Chart.yaml
-          rm -rf kube
-          mkdir -p kube
-          cp "$KUBECONFIG" kube
-          sed -i s+#SERVICE_NAME#+"$service"+g ./helm_chart/values.yaml ./helm_chart/Chart.yaml
-          kubectl create ns kartike_namespace || true
-          pwd
-          ls -l
+#      - uses: actions/checkout@v1
+#      - name: Prep helm chart
+#        run: |
+#          mv ./.helm/app/Chart.yaml ./.helm/app/Chart.old.yaml &&
+#          cat ./.helm/app/Chart.old.yaml | grep -v appVersion > ./.helm/app/Chart.yaml &&
+#          echo -e "\r\nappVersion: v${GITHUB_REF##*/}\r\n" >> ./.helm/app/Chart.yaml &&
+#          cat ./.helm/app/Chart.yaml
+#          rm -rf kube
+#          mkdir -p kube
+#          cp "$KUBECONFIG" kube
+#          sed -i s+#SERVICE_NAME#+"$service"+g ./helm_chart/values.yaml ./helm_chart/Chart.yaml
+#          kubectl create ns kartike_namespace || true
+#          pwd
+#          ls -l
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm upgrade --install release_name -n kartike_namespace helm_chart --atomic --timeout 300s --set image.repository=artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp --set image.tag=latest --set image.registrySecret= kartiketest  --set service.internalport=8080
+          exec: helm upgrade --install mywiki -f values.yaml . -n wm --set upgrade=Yes
           kubeconfig: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
 
-
+#          exec: helm upgrade --install release_name -n kartike_namespace helm_chart --atomic --timeout 300s --set image.repository=artifactory.beta.ibdp.calibo.com/newprojectteam/f/temp --set image.tag=latest --set image.registrySecret= kartiketest  --set service.internalport=8080
 
 
 
