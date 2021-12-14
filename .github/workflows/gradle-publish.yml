@@ -139,7 +139,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Prep helm chart
-        run: |
+      run: |
            mv ./.helm/app/Chart.yaml ./.helm/app/Chart.old.yaml &&
            cat ./.helm/app/Chart.old.yaml | grep -v appVersion > ./.helm/app/Chart.yaml &&
            echo -e "\r\nappVersion: v${GITHUB_REF##*/}\r\n" >> ./.helm/app/Chart.yaml &&
